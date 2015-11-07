@@ -3,7 +3,6 @@
 ##
 data_cons <-read.table("household_power_consumption.txt",header=TRUE, 
                        stringsAsFactors=FALSE,na.string='?',sep=';')
-##
 data_cons$Date <- as.Date(data_cons$Date, format="%d/%m/%Y")
 dt_plot <- data_cons[(data_cons$Date=="2007-02-01") | (data_cons$Date=="2007-02-02"),]
 ##
