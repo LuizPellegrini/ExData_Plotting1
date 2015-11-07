@@ -7,8 +7,10 @@ data_cons <-read.table("household_power_consumption.txt",header=TRUE,
 data_cons$Date <- as.Date(data_cons$Date, format="%d/%m/%Y")
 dt_plot <- data_cons[(data_cons$Date=="2007-02-01") | (data_cons$Date=="2007-02-02"),]
 ##
-dt_plot$Global_active_power <- as.numeric(as.character(dt_plot$Global_active_power))
-dt_plot$Global_reactive_power <- as.numeric(as.character(dt_plot$Global_reactive_power))
+dt_plot$Global_active_power <- 
+  as.numeric(as.character(dt_plot$Global_active_power))
+dt_plot$Global_reactive_power <- 
+  as.numeric(as.character(dt_plot$Global_reactive_power))
 dt_plot$Voltage <- as.numeric(as.character(dt_plot$Voltage))
 dt_plot <- transform(dt_plot, timestamp=as.POSIXct(paste(Date, Time)), "%d/%m/%Y %H:%M:%S")
 dt_plot$Sub_metering_1 <- as.numeric(as.character(dt_plot$Sub_metering_1))
@@ -21,8 +23,7 @@ par(mfrow = c(2, 2), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))
 plot(dt_plot$timestamp,dt_plot$Global_active_power, type="l", xlab="", 
      ylab="Global Active Power")
 #
-plot(dt_plot$timestamp,dt_plot$Voltage, type="l", xlab="", 
-     ylab="Voltage")
+plot(dt_plot$timestamp,dt_plot$Voltage, type="l", xlab="",   ylab="Voltage")
 #
 plot(dt_plot$timestamp,dt_plot$Sub_metering_1, 
      type="s",xlab="",ylab="Energy sub metering",col="black")
